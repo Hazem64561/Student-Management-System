@@ -1,30 +1,23 @@
 public class Grade {
     private Student student;
     private Courses course;
-    private double grade;
+    private int grade;
 
-    public Grade(Student student, Courses course, double grade) {
+    public Grade(Student student, Courses course, int grade) {
         this.student = student;
         this.course = course;
         this.grade = grade;
     }
-    public Student getStudent() {
-        return student;
+
+    public void recordGrade() {
+        System.out.println("Recorded Grade: " + grade + " for Student: " + student.getName() + " in Course: " + course.course_name);
     }
-    public Courses getCourse() {
-        return course;
-    }
-    public double getGrade() {
-        return grade;
-    }
-    public void setGrade(double grade) {
-        this.grade = grade;
-    }
-    public static void recordGrade(Student student, Courses course, double grade) {
-        Grade newGrade = new Grade(student, course, grade);
-        student.addGrade(course.getCourse_name(), newGrade);
-    }
-    public String toString() {
-        return "Grade for " + student.getName() + " in " + course.getCourse_name() + ": " + grade;
+
+    public static int totalGrade(Grade[] grades) {
+        int total = 0;
+        for (Grade g : grades) {
+            total += g.grade;
+        }
+        return total;
     }
 }
